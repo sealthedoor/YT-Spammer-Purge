@@ -1,4 +1,4 @@
-FROM python:3-slim AS builder
+FROM python:3.14-rc-alpine3.19 AS builder
 
 RUN apt-get update && \
     apt-get install -y gcc \
@@ -8,7 +8,7 @@ RUN apt-get update && \
 COPY requirements.txt ./
 RUN pip install --no-cache-dir --user -r requirements.txt
 
-FROM python:3-slim
+FROM python:3.14-rc-alpine3.19
 
 WORKDIR /usr/src/app
 RUN apt-get update && \
